@@ -18,7 +18,7 @@ services:
   api:
     build: .
     environment:
-      DATABASE_URL: postgresql://incidents_user:incidents_pass@db:5432/incidents
+      DATABASE_URL: postgresql+psycopg://incidents_user:incidents_pass@db:5432/incidents
     ports:
       - "5000:5000"
     depends_on:
