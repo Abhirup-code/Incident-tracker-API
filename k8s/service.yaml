@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: incident-tracker-api
+  namespace: incident-tracker
+spec:
+  type: ClusterIP
+  selector:
+    app: incident-tracker-api
+  ports:
+    - port: 80
+      targetPort: 5000

@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: incident-tracker-api
+  namespace: incident-tracker
+  labels:
+    app: incident-tracker-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: incident-tracker-api
+  template:
+    metadata:
+      labels:
+        app: incident-tracker-api
+    spec:
+      containers:
+        - name: api
+          image: incident-tracker-api:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
+          envFrom:
+            - configMapRef:
+                name: incident-tracker-config
+            - secretRef:
+                name: incident-tracker-secret
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            failureThreshold: 3

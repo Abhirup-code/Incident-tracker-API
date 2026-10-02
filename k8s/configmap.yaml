@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: incident-tracker-config
+  namespace: incident-tracker
+data:
+  FLASK_ENV: "production"
