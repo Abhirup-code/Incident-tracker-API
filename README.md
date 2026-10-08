@@ -63,10 +63,7 @@ docker compose up --build
 This starts a Postgres container and the API container together. The API
 will be available at `http://localhost:5000`.
 
-> Note: I wrote and validated the Dockerfile and compose file, but couldn't
-> run an actual Docker build in the environment I built this in. Run
-> `docker compose up --build` yourself and confirm it comes up clean before
-> relying on this in an interview.
+
 
 ## Deploying to Kubernetes (minikube)
 
