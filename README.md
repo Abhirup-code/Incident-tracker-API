@@ -113,8 +113,7 @@ Postgres uses `emptyDir` storage in `k8s/postgres.yaml`, which means data is
 lost if the Postgres pod restarts. A real deployment would use a
 `PersistentVolumeClaim` instead. I kept it simple here since the point of
 this project is the API/CI/CD/K8s pipeline, not building a production
-database setup, but it's worth knowing (and saying out loud in an
-interview) that this is a deliberate simplification, not an oversight.
+database setup.
 
 ## CI/CD
 
